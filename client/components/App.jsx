@@ -1,24 +1,17 @@
-import React, {useState, useEffect} from 'react'
-import {getGreeting} from '../apiClient'
+import React, { useState } from 'react'
 
 const App = () => {
-
-  const [greeting, setGreeting] = useState('')
   const [count, setCount] = useState(0)
 
-  useEffect(() => {
-    getGreeting()
-      .then((greeting) => {
-        console.log(greeting)
-        setGreeting(greeting)
-      })
-  }, [count])
+  function handleClick (event) {
+    setCount(count + 1)
+  }
 
   return (
     <>
-    {count}
-    <h1>{greeting}</h1>
-    <button onClick={() => setCount(count + 1)}>Click</button>
+      <div className='happyDiv'>Happy div</div>
+      Hello Whai - clicks = {count}
+      <button onClick={handleClick}>Click</button>
     </>
   )
 }
