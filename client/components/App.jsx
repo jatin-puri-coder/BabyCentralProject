@@ -1,19 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { HashRouter as Router, Route, Switch } from 'react-router-dom'
+import Clicks from './Clicks'
+import Navbar from './Navbar'
 
 const App = (props) => {
-  const [count, setCount] = useState(0)
-
-  function handleClick (event) {
-    setCount(count + 1)
-  }
-
   return (
-    <>
-      <h1>{props.header}</h1>
-      <div className='happyDiv'>Happy div</div>
-      Hello Whai - clicks = <span data-testid='count'>{count}</span>
-      <button onClick={handleClick}>Click</button>
-    </>
+    <Router >
+      <Navbar />
+      <Switch>
+        <Route path='/clicks/:startingClicks' component={Clicks} />
+        <Route path='/about'>I am the about page</Route>
+        <Route path='/'>I am the home page</Route>
+      </Switch>
+    </Router>
   )
 }
 
