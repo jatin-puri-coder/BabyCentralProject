@@ -15,6 +15,5 @@ test('clicking button increases count', () => {
   expect(count.textContent).toEqual('0')
   const button = screen.getByRole('button')
   fireEvent.click(button)
-  fireEvent.click(button)
   expect(count.textContent).toEqual('1')
 })
