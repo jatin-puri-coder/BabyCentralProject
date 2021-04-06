@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const App = () => {
+const App = (props) => {
   const [count, setCount] = useState(0)
 
   function handleClick (event) {
@@ -9,8 +9,9 @@ const App = () => {
 
   return (
     <>
+      <h1>{props.header}</h1>
       <div className='happyDiv'>Happy div</div>
-      Hello Whai - clicks = {count}
+      Hello Whai - clicks = <span data-testid='count'>{count}</span>
       <button onClick={handleClick}>Click</button>
     </>
   )
