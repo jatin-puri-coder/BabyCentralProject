@@ -1,25 +1,26 @@
 import React, {useState, useEffect} from 'react'
-import {getGreeting} from '../apiClient'
+import { HashRouter as Router, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
+import Home from './Home'
+
 
 const App = () => {
 
-  const [greeting, setGreeting] = useState('')
-  const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    getGreeting()
-      .then((greeting) => {
-        console.log(greeting)
-        setGreeting(greeting)
-      })
-  }, [count])
-
   return (
-    <>
-    {count}
-    <h1>{greeting}</h1>
-    <button onClick={() => setCount(count + 1)}>Click</button>
-    </>
+    <Router>
+      <div>
+      <Link to={'/'}><img src='/images/BabyCentralLogo.png' /></Link>
+      </div>
+      <div>
+        <h2 className='tagline'>-- Your one stop for everything baby related --</h2>
+      </div>
+    
+      <div>
+        <Route exact path='/' component={Home} />
+      </div>
+    
+    </Router>
   )
 }
 

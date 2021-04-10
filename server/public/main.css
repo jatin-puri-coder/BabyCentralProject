@@ -1,0 +1,56 @@
+.title {
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+    font-size: 3vmax;
+}
+
+body {  
+    margin: 2vw 2vw;
+ 
+}
+
+.tagline {
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+    color: teal;
+}
+
+.homeheading {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4vw;
+}
+
+img {
+    display: block;
+    margin: auto;
+    margin-top: 3vw;
+    width: 15%;
+    height: 15%;
+    border: 2px solid teal;
+    border-radius: 50%;    
+}
+
+/* Split the screen in half */
+.split {
+    height: 100%;
+    width: 50%;
+    margin-top: 23vw;
+    position:fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+
+
+  /* Control the left side */
+.left {
+    left: 0;
+    text-align: center;
+  }
+  
+  /* Control the right side */
+  .right {
+    right: 0;
+    text-align: center;
+  }
