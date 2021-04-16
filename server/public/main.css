@@ -37,6 +37,10 @@ body {
     height: 30vw;
 }
 
+.position {
+    position: relative;
+}
+
 /* Split the screen in half */
 .split {
     height: 100%;
@@ -72,3 +76,11 @@ body {
     background:#6cf;
     opacity: 50%;
  }
+
+ .textoverimg {
+    position: absolute;
+    bottom: 8px;
+    right: 80px;
+    color: wheat;
+    opacity: 40%;
+  }

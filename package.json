@@ -17,6 +17,7 @@
     "test": "jest",
     "test:watch": "jest --watchAll",
     "webpack": "webpack --config ./client/webpack.config.js",
+    "knex": "knex --knexfile server/db/knexfile.js",
     "lint": "eslint --ext .js,.jsx ."
   },
   "keywords": [
