@@ -26,11 +26,13 @@ function BabyPhotography(props) {
          <div className='photographers'>
            {photographers.map(({name, location, image}) => 
            <>
-           <Link to={'/photographers/' + name}>
+           <div className='photographerbox'>
+            <Link to={'/photographers/' + name}>
               <h2>{name}</h2>
-              <img className='mainbabypics' src= {image} />
-           </Link>
-           <h4>{location}</h4>
+            </Link>
+              <h4 className='location'>- {location}</h4>
+              <img className='mainbabypics' src= {image} />      
+           </div>
            </>
            )}
            

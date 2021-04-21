@@ -97,5 +97,23 @@ body {
   .photographers {
     columns: 2 auto;
     text-align: center;
+    font-family: 'Antonio', sans-serif; 
+
+  }
+
+  .photographerbox {
+    border: 2px solid teal;
+    border-radius: 5%;
+    background-color:rgb(248, 255, 255);
+    width: 450px;
+    height: 450px;
+    display: block;
+    margin-bottom: 10px;
+    margin-left: 100px;
+    
+  }
+
+  .location {
+    font-family: 'Antonio', sans-serif;
 
   }
