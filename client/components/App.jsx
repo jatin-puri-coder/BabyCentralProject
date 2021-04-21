@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import BabyPhotography from './BabyPhotography'
 import Home from './Home'
 import BabyClothing from './BabyClothing'
+import Photographers from './Photographers'
+
 
 
 const App = () => {
@@ -20,6 +22,9 @@ const App = () => {
         <Route exact path='/' component={Home} />
         <Route exact path='/babyphotography' component={BabyPhotography} />
         <Route exact path='/babyclothing' component={BabyClothing} />
+
+        <Route exact path={'/photographers/:name'} component={Photographers} />
+
       </div>
       
     

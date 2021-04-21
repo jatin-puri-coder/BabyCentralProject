@@ -3,7 +3,7 @@ import { HashRouter as Router, Link } from 'react-router-dom'
 
 import { getPhotographers } from '../api'
 
-function BabyPhotography(props) {
+function BabyPhotography() {
     const [photographers, setPhotographers] = useState([])
 
     useEffect(() => {
@@ -26,13 +26,13 @@ function BabyPhotography(props) {
          <div className='photographers'>
            {photographers.map(({name, location, image}) => 
            <>
-           <div className='photographerbox'>
-            <Link to={'/photographers/' + name}>
-              <h2>{name}</h2>
-            </Link>
+           <Link to={'/photographers/' + name}>
+           <div className='photographerbox'>      
+              <h2>{name}</h2>  
               <h4 className='location'>- {location}</h4>
               <img className='mainbabypics' src= {image} />      
            </div>
+           </Link>
            </>
            )}
            
