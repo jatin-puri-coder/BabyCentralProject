@@ -28,12 +28,13 @@ function BabyPhotography(props) {
            <>
            <Link to={'/photographers/' + name}>
               <h2>{name}</h2>
-              <img src= '${image}' />
+              <img className='mainbabypics' src= {image} />
            </Link>
-           <h2>{location}</h2>
+           <h4>{location}</h4>
            </>
            )}
            
+      
          </div>
       </>
     )
