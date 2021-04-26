@@ -5,6 +5,7 @@ import BabyPhotography from './BabyPhotography'
 import Home from './Home'
 import BabyClothing from './BabyClothing'
 import Photographers from './Photographers'
+import Nav from './Nav'
 
 
 
@@ -12,7 +13,8 @@ const App = () => {
 
   return (
     <Router>
-      <div>
+        <Route path='/' component={Nav} />
+      <div className='container'>
         <Link to={'/'}><img className='logo' src='/images/BabyCentralLogo.png' /></Link>
       </div>
       <div>
@@ -22,7 +24,6 @@ const App = () => {
         <Route exact path='/' component={Home} />
         <Route exact path='/babyphotography' component={BabyPhotography} />
         <Route exact path='/babyclothing' component={BabyClothing} />
-
         <Route exact path={'/photographers/:name'} component={Photographers} />
 
       </div>

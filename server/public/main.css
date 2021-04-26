@@ -10,6 +10,11 @@ body {
  
 }
 
+.container {
+  margin-left: 35vw;
+  margin-right: 35vw;
+}
+
 .tagline {
     font-family: 'Dancing Script', cursive;
     text-align: center;
@@ -24,9 +29,8 @@ body {
 .logo {
     display: block;
     margin: auto;
-    margin-top: 1vw;
-    width: 15%;
-    height: 15%;
+    width: 50%;
+    height: 50%;
     border: 2px solid teal;
     border-radius: 50%;    
 }
@@ -116,4 +120,15 @@ body {
   .location {
     font-family: 'Antonio', sans-serif;
 
+  }
+
+  .nav {
+    float: right;
+  }
+
+  .navbutton {
+    margin-right: 25px;
+    font-family: 'Antonio', sans-serif;
+    color: teal;
+    
   }
