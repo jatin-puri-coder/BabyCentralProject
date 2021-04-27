@@ -7,8 +7,8 @@ function Nav () {
         <>
             <div className='nav'>
             <Link className='navbutton'>Log Off</Link>
-            <Link className='navbutton'>Register</Link>
-            <Link className='navbutton'>Sign In</Link>
+            <Link to='/register' className='navbutton'>Register</Link>
+            <Link to='/signin' className='navbutton'>Sign In</Link>
             </div>
 
         </>

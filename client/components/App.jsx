@@ -6,6 +6,8 @@ import Home from './Home'
 import BabyClothing from './BabyClothing'
 import Photographers from './Photographers'
 import Nav from './Nav'
+import Register from './Register'
+import SignIn from './SignIn'
 
 
 
@@ -25,6 +27,8 @@ const App = () => {
         <Route exact path='/babyphotography' component={BabyPhotography} />
         <Route exact path='/babyclothing' component={BabyClothing} />
         <Route exact path={'/photographers/:name'} component={Photographers} />
+        <Route path='/register' component={Register} />
+        <Route path='/signin' component={SignIn} />
 
       </div>
       
