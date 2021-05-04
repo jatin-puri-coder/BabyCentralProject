@@ -1,12 +1,11 @@
-const environment = process.env.NODE_ENV || 'development'
-const config = require('../../knexfile')[environment]
+// const environment = process.env.NODE_ENV || 'development'
+const config = require('../../knexfile').development
 const connection = require('knex')(config)
 
 module.exports = {
-    getPhotographers
+  getPhotographers
 }
 
 function getPhotographers (db = connection) {
-    return db('photographers').select()
-  }
-  
+  return db('photographers').select()
+}
