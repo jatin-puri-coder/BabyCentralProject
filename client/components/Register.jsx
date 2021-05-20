@@ -40,29 +40,31 @@ function Register(props) {
   }
   return (
     <>
-      <h1 className='title'>Register</h1>
+      <h1 className='heading'>Register</h1>
       <div onClick={hideError}>
         { error && `Error:${error}`}
       </div>
-      <form>
-        <label htmlFor='username'>Username: </label>
-        <input type='text'
-          id='username'
-          name='username'
-          placeholder='enter your username'
-          value={form.username}
-          onChange={handleChange} />
+      <div className='form'>
+        <form className='form'>
+          <label htmlFor='username'>Username: </label>
+          <input type='text'
+            id='username'
+            name='username'
+            placeholder='enter your username'
+            value={form.username}
+            onChange={handleChange} />
 
-        <label htmlFor='password'> Password: </label>
-        <input type='password'
-          id='password'
-          name='password'
-          placeholder='enter your password'
-          value={form.password}
-          onChange={handleChange} />
-
-        <button onClick={handleClick}>Register</button>
-      </form>
+          <label htmlFor='password'> Password: </label>
+          <input type='password'
+            id='password'
+            name='password'
+            placeholder='enter your password'
+            value={form.password}
+            onChange={handleChange} />
+          <br></br>
+          <button onClick={handleClick}>Register</button>
+        </form>
+      </div>
     </>
   )
 }
