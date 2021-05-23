@@ -19,7 +19,6 @@
     "webpack": "webpack --config ./client/webpack.config.js",
     "knex": "knex --knexfile server/db/knexfile.js",
     "lint": "eslint --ext .js,.jsx .",
-    "heroku-postbuild": "npm run build"
   },
   "keywords": [
     "frontend"
