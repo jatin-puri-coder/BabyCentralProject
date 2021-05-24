@@ -1,5 +1,5 @@
 const environments = {
-  development: 'http://babycentral.herokuapp.com//api/v1',
+  development: 'http://babycentral.herokuapp.com/api/v1',
   test: 'http://localhost:3333/api/v1',
   production: '',
   integration: '',
