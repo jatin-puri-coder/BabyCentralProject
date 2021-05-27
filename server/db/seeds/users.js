@@ -1,15 +1,17 @@
-const { generateHash } = require('authenticare/server')
+const bcrypt = require('bcrypt')
+const saltRounds = 10
 
 exports.seed = (knex) => {
   return knex('users').del()
     .then(() => Promise.all([
-      generateHash('jatin'),
-      generateHash('admin')
+      bcrypt.hash('jatin', saltRounds),
+      bcrypt.hash('admin', saltRounds)
     ]))
-    .then(([jatinHash, adminHash]) =>
-      knex('users').insert([
-        { id: 1, username: 'jatin', hash: jatinHash },
-        { id: 2, username: 'admin', hash: adminHash }
+
+    .then(([jatinHash, adminHash]) => {
+      return knex('users').insert([
+        { id: 1, username: 'jatin', password_hash: jatinHash },
+        { id: 2, username: 'admin', password_hash: adminHash }
       ])
-    )
+    })
 }

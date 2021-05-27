@@ -1,10 +1,10 @@
 import React, { useState, useEffect} from 'react'
 import { HashRouter as Router, Link } from 'react-router-dom'
-import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+import { IsAuthenticated, NotAuthenticated } from './Authenticated'
 
 import { getPhotographers } from '../api'
 
-function BabyPhotography() {
+function BabyPhotography () {
   const [photographers, setPhotographers] = useState([])
 
   useEffect(() => {
@@ -20,7 +20,7 @@ function BabyPhotography() {
 
   return ( 
     <>
-      <IfAuthenticated>
+      <IsAuthenticated>
         <h1 className='title'>Baby Photographers</h1>
         <div className='photographers'>
           {photographers.map(({ name, location, image }) =>
@@ -35,11 +35,11 @@ function BabyPhotography() {
             </>
           )}
         </div>
-      </IfAuthenticated>
-      <IfNotAuthenticated>
+      </IsAuthenticated>
+      <NotAuthenticated>
         <br></br>
         <div><h1 className='heading'>You need to Sign in or Register to view this page</h1></div>
-      </IfNotAuthenticated>
+      </NotAuthenticated>
     </>
   )
 }

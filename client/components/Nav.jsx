@@ -1,21 +1,21 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { logOff } from 'authenticare/client'
-import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+import { logOffUser } from '../passportapi'
+import { IsAuthenticated, NotAuthenticated } from './Authenticated'
 
 function Nav () {
   return (
     <>
       <div className='nav'>
-        <IfNotAuthenticated>
+        <NotAuthenticated>
           <NavLink to='/signin' className='navbutton'>Sign In</NavLink>
-        </IfNotAuthenticated>
-        <IfNotAuthenticated>
+        </NotAuthenticated>
+        <NotAuthenticated>
           <NavLink to='/register' className='navbutton'>Register</NavLink>
-        </IfNotAuthenticated>
-        <IfAuthenticated>
-          <NavLink to='/' onClick={logOff} className='navbutton'>Log Off</NavLink>
-        </IfAuthenticated>
+        </NotAuthenticated>
+        <IsAuthenticated>
+          <NavLink to='/' onClick={logOffUser} className='navbutton'>Log Off</NavLink>
+        </IsAuthenticated>
       </div>
 
     </>

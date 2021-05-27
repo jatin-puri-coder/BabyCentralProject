@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
-import { register, isAuthenticated } from 'authenticare/client'
-import { baseApiUrl as baseUrl } from '../config'
+import { registerUser, getUser } from '../passportapi'
+import { setUser } from '../actions/user'
+import { connect } from 'react-redux'
+
+const initialForm = {
+  username: '',
+  password: ''
+}
 
 function Register(props) {
-  const [form, setForm] = useState({
-    username: '',
-    password: ''
-  })
-
+  const [form, setForm] = useState(initialForm)
   const [error, setError] = useState('')
 
   function hideError () {
@@ -24,20 +26,43 @@ function Register(props) {
 
   function handleClick (e) {
     e.preventDefault()
-    const { username, password } = form
-    register({ username, password }, { baseUrl })
-      .then(() => {
-        // eslint-disable-next-line promise/always-return
-        if (isAuthenticated()) {
+    registerUser(form)
+      .then(result => {
+        setForm(initialForm)
+        if (result === 'User Created') {
+          return getUser()
+        } else {
+          setError(result)
+          return null
+        }
+      })
+      .then(result => {
+        if (result) {
+          props.dispatch(setUser(result))
           props.history.push('/')
+          return null
+        } else {
+          return null
         }
       })
-      .catch(err => {
-        if (err.message === 'USERNAME_UNAVAILABLE') {
-          setError('Username is not available')
-        }
-      })
+      .catch(err =>
+        console.log('user not sent for registeration' + err.message))
   }
+
+  //   const { username, password } = form
+  //   register({ username, password }, { baseUrl })
+  //     .then(() => {
+  //       // eslint-disable-next-line promise/always-return
+  //       if (isAuthenticated()) {
+  //         props.history.push('/')
+  //       }
+  //     })
+  //     .catch(err => {
+  //       if (err.message === 'USERNAME_UNAVAILABLE') {
+  //         setError('Username is not available')
+  //       }
+  //     })
+  // }
   return (
     <>
       <h1 className='heading'>Register</h1>
@@ -69,4 +94,10 @@ function Register(props) {
   )
 }
 
-export default Register
+function mapStateToProps (state) {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(Register)

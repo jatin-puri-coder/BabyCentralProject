@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
-import { signIn, isAuthenticated } from 'authenticare/client'
-import { baseApiUrl as baseUrl } from '../config'
+import { loginUser, getUser } from '../passportapi'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+
+import { setUser } from '../actions/user'
+
+const initialForm = {
+  username: '',
+  password: ''
+}
 
 function SignIn (props) {
-  const [form, setForm] = useState({
-    username: '',
-    password: ''
-  })
-
+  const [form, setForm] = useState(initialForm)
   const [error, setError] = useState('')
 
   function hideError () {
@@ -24,20 +28,43 @@ function SignIn (props) {
 
   function handleClick (e) {
     e.preventDefault()
-    const { username, password } = form
-    signIn({ username, password }, { baseUrl })
-      .then(() => {
-        // eslint-disable-next-line promise/always-return
-        if (isAuthenticated()) {
+    loginUser(form)
+      .then((result) => {
+        setForm(initialForm)
+        if (result === 'Successfully Authenticated') {
+          return getUser()
+        } else {
+          setError(result)
+          return null
+        }
+      })
+      .then(result => {
+        if (result) {
+          props.dispatch(setUser(result))
           props.history.push('/')
+          return null
+        } else {
+          return null
         }
       })
-      .catch(err => {
-        if (err.message === 'INVALID_CREDENTIALS') {
-          setError('Username and password combination not found')
-        }
-      })
+      .catch(err => 
+        console.log('user not sent for registeration' + err.message))
   }
+
+  //   const { username, password } = form
+  //   signIn({ username, password }, { baseUrl })
+  //     .then(() => {
+  //       // eslint-disable-next-line promise/always-return
+  //       if (isAuthenticated()) {
+  //         props.history.push('/')
+  //       }
+  //     })
+  //     .catch(err => {
+  //       if (err.message === 'INVALID_CREDENTIALS') {
+  //         setError('Username and password combination not found')
+  //       }
+  //     })
+  // }
 
   return (
     <>
@@ -70,4 +97,10 @@ function SignIn (props) {
   )
 }
 
-export default SignIn
+function mapStateToProps (state) {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(SignIn)

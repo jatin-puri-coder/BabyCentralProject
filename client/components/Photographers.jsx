@@ -4,39 +4,38 @@ import { HashRouter as Router, Link } from 'react-router-dom'
 import { getPhotographers } from '../api'
 
 function Photographers (props) {
-    const [photographers, setPhotographers] = useState([])
+  const [photographers, setPhotographers] = useState([])
 
-    console.log(props.match.params)
+  console.log(props.match.params)
 
-    useEffect(() => {
-        getPhotographers()
-          .then(photographer => {
-            setPhotographers(photographer)
-            
-            return null
-          })
-          .catch(e => {
-            console.log(e)
-          })  
-      }, [])
+  useEffect(() => {
+    getPhotographers()
+      .then(photographer => {
+        setPhotographers(photographer)
+        return null
+      })
+      .catch(e => {
+        console.log(e)
+      })
+  }, [])
 
-// const currentPhotographer = photographers.find((props) => {
-//     return props.match.params
-// })
+  // const currentPhotographer = photographers.find((props) => {
+  //     return props.match.params
+  // })
 
-      return (
-        <div>
+  return (
+    <div>
 
-        {/* //if not currentPhotographer show loading else show photgrapher details */}
+      {/* //if not currentPhotographer show loading else show photgrapher details */}
 
-        {photographers.map(({name, location, image}) => 
-          <>
-            <h1 className='title'>{name}</h1> 
+      {photographers.map(({name, location, image}) => 
+        <>
+          <h1 className='title'>{name}</h1> 
 
-          </>
-        )}
-        </div>
-      )
+        </>
+      )}
+    </div>
+  )
 }
 
 export default Photographers
