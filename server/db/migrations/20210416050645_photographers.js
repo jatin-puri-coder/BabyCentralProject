@@ -1,14 +1,14 @@
-exports.up = function(knex) {
+exports.up = function (knex) {
   return knex.schema.createTable('photographers', (table) => {
     table.increments('id').primary()
-    table.string('name')
-    table.string('location')
-    table.string('image')
-    table.string('about')
-    table.string('website')
+    table.varchar('name')
+    table.varchar('location')
+    table.varchar('image')
+    table.text('about')
+    table.varchar('website')
   })
 }
 
-exports.down = function(knex) {
+exports.down = function (knex) {
   return knex.schema.dropTable('photographers')
 }
