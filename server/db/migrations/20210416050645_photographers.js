@@ -1,11 +1,11 @@
 exports.up = function (knex) {
   return knex.schema.createTable('photographers', (table) => {
     table.increments('id').primary()
-    table.varchar('name')
-    table.varchar('location')
-    table.varchar('image')
+    table.text('name')
+    table.text('location')
+    table.text('image')
     table.text('about')
-    table.varchar('website')
+    table.text('website')
   })
 }
 
