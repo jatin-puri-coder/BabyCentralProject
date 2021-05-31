@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-const photographerUrl = '/api/v1/auth/photographers/'
+const photographerUrl = '/api/v1/photographers/'
 
 export function getPhotographers () {
   return request
