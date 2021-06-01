@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
 import { loginUser, getUser } from '../passportapi'
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
-
 import { setUser } from '../actions/user'
 
 const initialForm = {
@@ -32,22 +29,14 @@ function SignIn (props) {
       .then((result) => {
         setForm(initialForm)
         if (result === 'Successfully Authenticated') {
+          props.history.push('/')
           return getUser()
         } else {
           setError(result)
           return null
         }
       })
-      .then(result => {
-        if (result) {
-          props.dispatch(setUser(result))
-          props.history.push('/')
-          return null
-        } else {
-          return null
-        }
-      })
-      .catch(err => 
+      .catch(err =>
         console.log('user not sent for registeration' + err.message))
   }
 
@@ -97,10 +86,4 @@ function SignIn (props) {
   )
 }
 
-function mapStateToProps (state) {
-  return {
-    user: state.user
-  }
-}
-
-export default connect(mapStateToProps)(SignIn)
+export default SignIn

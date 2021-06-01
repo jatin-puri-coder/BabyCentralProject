@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import { registerUser, getUser } from '../passportapi'
-import { setUser } from '../actions/user'
-import { connect } from 'react-redux'
 
 const initialForm = {
   username: '',
@@ -30,18 +28,10 @@ function Register(props) {
       .then(result => {
         setForm(initialForm)
         if (result === 'User Created') {
+          props.history.push('/')
           return getUser()
         } else {
           setError(result)
-          return null
-        }
-      })
-      .then(result => {
-        if (result) {
-          props.dispatch(setUser(result))
-          props.history.push('/')
-          return null
-        } else {
           return null
         }
       })
@@ -94,10 +84,4 @@ function Register(props) {
   )
 }
 
-function mapStateToProps (state) {
-  return {
-    user: state.user
-  }
-}
-
-export default connect(mapStateToProps)(Register)
+export default Register
