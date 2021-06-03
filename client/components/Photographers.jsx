@@ -1,39 +1,37 @@
-import React, { useState, useEffect} from 'react'
-import { HashRouter as Router, Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
 
-import { getPhotographers } from '../api'
+import { getPhotographerByName } from '../api'
 
 function Photographers (props) {
-  const [photographers, setPhotographers] = useState([])
+  const photographerName = props.match.params.name
+  const [photographer, setPhotographer] = useState('')
 
   console.log(props.match.params)
 
   useEffect(() => {
-    getPhotographers()
+    getPhotographerByName(photographerName)
       .then(photographer => {
-        setPhotographers(photographer)
+        setPhotographer(photographer)
         return null
       })
-      .catch(e => {
-        console.log(e)
+      .catch(err => {
+        console.log(err.message)
       })
-  }, [])
+  }, [photographerName])
 
   // const currentPhotographer = photographers.find((props) => {
-  //     return props.match.params
+  //   return props.match.params
   // })
 
   return (
     <div>
 
-      {/* //if not currentPhotographer show loading else show photgrapher details */}
+      <h1 className='title'>{ photographer.name }</h1>
+      <h4 className='location'>{ photographer.location }</h4>
+      <img className='mainbabypics' src={photographer.image}></img>
+      <p>{ photographer.about }</p>
+      <a target='blank' href={photographer.website}>{ photographer.website }</a>
 
-      {photographers.map(({name, location, image}) => 
-        <>
-          <h1 className='title'>{name}</h1> 
-
-        </>
-      )}
     </div>
   )
 }

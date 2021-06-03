@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { loginUser, getUser } from '../passportapi'
-import { setUser } from '../actions/user'
 
 const initialForm = {
   username: '',

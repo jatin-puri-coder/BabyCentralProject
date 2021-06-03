@@ -18,7 +18,7 @@ function BabyPhotography () {
       })
   }, [])
 
-  return ( 
+  return (
     <>
       <IsAuthenticated>
         <h1 className='title'>Baby Photographers</h1>
