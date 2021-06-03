@@ -27,10 +27,12 @@ function Photographers (props) {
     <div>
 
       <h1 className='title'>{ photographer.name }</h1>
-      <h4 className='location'>{ photographer.location }</h4>
+      <h4 className='specificlocation'>{ photographer.location }</h4>
       <img className='mainbabypics' src={photographer.image}></img>
-      <p>{ photographer.about }</p>
-      <a target='blank' href={photographer.website}>{ photographer.website }</a>
+      <div className='info'>
+        <p>{ photographer.about }</p>
+        <a target='blank' href={photographer.website}>{ photographer.website }</a>
+      </div>
 
     </div>
   )
