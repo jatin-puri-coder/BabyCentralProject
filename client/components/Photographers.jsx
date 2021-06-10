@@ -19,13 +19,8 @@ function Photographers (props) {
       })
   }, [photographerName])
 
-  // const currentPhotographer = photographers.find((props) => {
-  //   return props.match.params
-  // })
-
   return (
-    <div>
-
+    <div className='photographerpage'>
       <h1 className='title'>{ photographer.name }</h1>
       <h4 className='specificlocation'>{ photographer.location }</h4>
       <img className='mainbabypics' src={photographer.image}></img>

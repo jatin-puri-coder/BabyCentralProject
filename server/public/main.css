@@ -105,6 +105,10 @@ body {
 
   }
 
+  .photographerpage {
+    margin-bottom: 10vh;
+  }
+
   .photographerbox {
     border: 2px solid teal;
     border-radius: 5%;
