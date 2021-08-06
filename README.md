@@ -1,4 +1,5 @@
-This is a one stop website for anything baby related.
+This is a one stop website for anything baby related. Created as a student project and deployed on heroku.
+I added simple authentication using passport.
 
 Currently under construction
 
